@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <style>
      * {
         margin: 0;
@@ -252,6 +253,23 @@
     object-fit: cover;
     }
 
+    .back-link {
+  display: inline-block;
+  margin: 20px;
+  font-size: 1rem;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'lato';
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  margin-top: 4rem;
+}
+
+.back-link:hover {
+  color: #C08300;
+}
 
     </style>
 </head>
@@ -320,14 +338,18 @@
             </div>
             <div class="search-results">
             <h3>Recommended Products</h3>
-            <div class="product">
-                <img src="FarzanaiVelvet.png" alt="Farzana" />
-                <p><strong>Farzana</strong> | <em>Fusion Collection</em></p>
-            </div>
-            <div class="product">
-                <img src="FrangiImg.png" alt="Frangi" />
-                <p><strong>Frangi</strong> | <em>Enthusiast Collection</em></p>
-            </div>
+            <a href="productpage1.html">
+                <div class="product">
+                  <img src="FarzanaiVelvet.png" alt="Farzana" />
+                  <p><strong>Farzana</strong> | <em>Fusion Collection</em></p>
+                </div>
+                </a>
+                <a href="productpage2.html">
+                <div class="product">
+                  <img src="FrangiImg.png" alt="Frangi" />
+                  <p><strong>Frangi</strong> | <em>Enthusiast Collection</em></p>
+                </div>
+              </a>
             </div>
         </div>
 
@@ -383,5 +405,7 @@
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile/browser compatibility
         });
     </script>
+    
+    <a href="index.html" class="back-link">&lt; BACK</a>
 </body>
 </html>
