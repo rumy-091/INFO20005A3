@@ -219,13 +219,67 @@
   object-fit: cover;
 }
 
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  z-index: 1003;
+}
+
+.main-header.hide {
+  transform: translateY(-100%);
+}
+
+.sitename {
+  font-size: 2rem;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  transition: opacity 0.3s ease;
+  padding: 1.1rem 0;
+}
+
+
+.hidden-name {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hidden-name.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sitename-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999; /* make sure it stays on top */
+}
+
+.sitename-wrapper.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 
 
       /* Hero section */
       .announcement-bar {
         text-align: center;
-        font-size: 0.9rem;
-        padding: 8px;
+        font-size: 0.7rem;
+        padding: 7px;
         color: #e0e0e0;
         background: none;
         z-index: 1
@@ -493,6 +547,10 @@
 <div class="announcement-bar">
   International Shipping to Worldwide Destinations
 </div>
+<header class="main-header">
+  <div class="sitename-wrapper hidden-name">
+    <div class="sitename">OUD COLLECTION</div>
+  </div>
 
   <!-- Hamburger Menu -->
     <div class="hamburger-nav">
@@ -593,6 +651,57 @@
       </button>
     </div>
 </a>
+</header>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('.hamburger-nav');
+    const sitename = document.querySelector('.sitename-wrapper');
+    const heroSection = document.querySelector('.hero');
+
+    let lastScrollY = window.scrollY;
+
+    function updateOnScroll() {
+      const currentScrollY = window.scrollY;
+
+      // Header scroll behavior
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        header.classList.remove('visible');
+      } else {
+        header.classList.add('visible');
+      }
+
+      lastScrollY = currentScrollY;
+
+      // Show sitename only after hero section
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      if (currentScrollY > heroBottom - 100) {
+        sitename.classList.add('visible');
+      } else {
+        sitename.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', updateOnScroll);
+  });
+</script>
+<script>
+  let lastScrollTop = 0;
+  const header = document.querySelector('.main-header');
+
+  window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (scrollTop > lastScrollTop && scrollTop > 100) {
+      // Scrolling down
+      header.classList.add('hide');
+  } else {
+      // Scrolling up
+      header.classList.remove('hide');
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile/browser compatibility
+  });
+</script>
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-overlay">
