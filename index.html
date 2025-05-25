@@ -497,48 +497,46 @@
     }
 
     .review-body {
-      display: flex;
-      gap: 20px;
-      background-color: #2e2926;
-      border-radius: 10px;
-      padding: 20px;
-      align-items: stretch;
-      position: relative;
-    }
+  display: flex;
+  gap: 20px;
+  background-color: #2e2926;
+  border-radius: 10px;
+  padding: 20px;
+  align-items: stretch;
+  position: relative;
+  flex-wrap: wrap; /* Enables stacking on small screens */
+}
 
-    .review-img {
-      width: 150px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
+.review-img {
+  width: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 
-    .review-text {
-      flex: 1;
-      color: #fff8f1;
-    }
+.review-text {
+  flex: 1;
+  color: #fff8f1;
+  min-width: 0; /* Ensures flex doesn't overflow */
+  padding-right: 40px; /* Leaves room for the arrow */
+}
 
-    .reviewer-name {
-      font-style: italic;
-      font-size: 1.6rem;
-      color: #fff;
-      margin-bottom: 10px;
-    }
+.review-paragraph {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #e5dbd1;
+  margin: 0;
+}
 
-    .review-paragraph {
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #e5dbd1;
-      width: 600px;
-    }
-
-    .arrow-icon {
-      font-size: 2rem;
-      color: #e5dbd1;
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
+.arrow-icon {
+  font-size: 2rem;
+  color: #e5dbd1;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
   </style>
 
 </head>
