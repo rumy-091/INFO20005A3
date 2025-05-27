@@ -349,22 +349,6 @@
       font-size: 1rem;
     }
 
-    @media (max-width: 768px) {
-      .hero-logo {
-        max-width: 12rem;
-        margin-bottom: 1rem;
-      }
-
-      .headline {
-        font-size: 2rem;
-      }
-
-      .cta-btn {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.5rem;
-      }
-    }
-
 /* Product Section */
       .product-section {
       padding: 4rem 2rem;
@@ -379,6 +363,7 @@
       display: inline-block;
       text-transform: uppercase;
       letter-spacing: 1px;
+      text-align: center;
     }
 
     .products {
@@ -437,6 +422,7 @@
       border-radius: 2px;
     }
 
+    /* Review section*/
     .customer-reviews {
       
       padding: 60px 20px;
@@ -498,60 +484,156 @@
     }
 
     .review-body {
-  display: flex;
-  gap: 20px;
-  background-color: #2e2926;
-  border-radius: 10px;
-  padding: 20px;
-  align-items: stretch;
-  position: relative;
-  flex-wrap: wrap; /* Enables stacking on small screens */
-}
+      display: flex;
+      gap: 20px;
+      background-color: #2e2926;
+      border-radius: 10px;
+      padding: 20px;
+      align-items: stretch;
+      position: relative;
+      flex-wrap: wrap; /* Enables stacking on small screens */
+    }
 
-.review-img {
-  width: 150px;
-  border-radius: 10px;
-  object-fit: cover;
-  flex-shrink: 0;
-}
+    .review-img {
+      width: 150px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
 
-.review-text {
-  flex: 1;
-  color: #fff8f1;
-  min-width: 0; /* Ensures flex doesn't overflow */
-  padding-right: 40px; /* Leaves room for the arrow */
-}
+    .review-text {
+      flex: 1;
+      color: #fff8f1;
+      min-width: 0; /* Ensures flex doesn't overflow */
+      padding-right: 40px; /* Leaves room for the arrow */
+    }
 
-.review-paragraph {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #e5dbd1;
-  margin: 0;
-}
+    .review-paragraph {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #e5dbd1;
+      margin: 0;
+    }
 
-.arrow-icon {
-  font-size: 2rem;
-  color: #e5dbd1;
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-  </style>
+    .arrow-icon {
+      font-size: 2rem;
+      color: #e5dbd1;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
 
-</head>
-<body>
-<!-- Announcement Bar -->
-<div class="announcement-bar">
-  International Shipping to Worldwide Destinations
-</div>
-<header class="main-header">
-  <div class="sitename-wrapper hidden-name">
-    <a href="index.html">
-    <div class="sitename">OUD COLLECTION</div>
-  </a>
-  </div>
+    /*perfume hero section*/
+
+    .perfume-hero {
+      position: relative;
+      background-image: url("perfume\ hero.png"); /* Replace with actual path */
+      background-size: cover;
+      background-position: center;
+      min-height: 80vh; /* Adjust height as needed */
+      display: flex;
+      justify-content: left;
+      font-family: 'Georgia', serif;
+    }
+
+    .poverlay {
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+      width: 70%;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      border-radius: 0px 15px 15px 0px;
+    }
+
+    .hero-text {
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .hero-text h2 {
+      font-size: 4rem;
+      line-height: 1.3;
+      margin-bottom: 15px;
+      font-style: italic;
+      color: #C08300;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #eaeaea;
+    }
+
+    @media (max-width: 768px) {
+      .hero-logo {
+        max-width: 12rem;
+        margin-bottom: 1rem;
+      }
+
+      .headline {
+        font-size: 2rem;
+      }
+
+      .cta-btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.5rem;
+      }
+
+      .review-body {
+        flex-direction: column;
+        align-items: center; /* Optional: centers image and text */
+        padding: 20px;
+      }
+
+      .review-img {
+        width: 100%;       /* Make image full width */
+        height: auto;       /* Maintain aspect ratio */
+        max-width: 300px;   /* Optional: limit size for aesthetics */
+      }
+
+      .review-text {
+        padding-right: 0;   /* Remove space reserved for arrow */
+        text-align: center; /* Optional for better look */
+      }
+
+      .arrow-icon {
+        position: static;
+        margin-top: 20px;
+        align-self: center;
+        transform: none;
+      }
+
+      .overlay {
+        width: 100%;
+        padding: 30px 15px;
+      }
+
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+      }
+    
+      </style>
+
+    </head>
+    <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+      International Shipping to Worldwide Destinations
+    </div>
+    <header class="main-header">
+      <div class="sitename-wrapper hidden-name">
+        <a href="index.html">
+        <div class="sitename">OUD COLLECTION</div>
+      </a>
+      </div>
 
   <!-- Hamburger Menu -->
     <div class="hamburger-nav">
@@ -777,5 +859,23 @@
 </section>
   <!-- Reusable line -->
   <div class="section-break"></div>
+
+  <!--Perfume hero-->
+  <section class="perfume-hero">
+    <div class="poverlay">
+      <div class="hero-text">
+        <h2><em>This is perfumery’s other side</em></h2>
+        <p>For those seeking more than what the market offers</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reusable line -->
+  <div class="section-break"></div>
+
+  <section>
+    <h2 class="section-title">SHOP BY COLLECTION</h2>
+  </section>
+
 </body>
 </html>
