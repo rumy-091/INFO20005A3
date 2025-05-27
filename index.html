@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oud Collection</title>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
       
       * {
@@ -348,21 +349,22 @@
       font-weight: bold;
       font-size: 1rem;
     }
-
-/* Product Section */
-      .product-section {
-      padding: 4rem 2rem;
-      background-color: #0A0400;
-      text-align: center;
-    }
-
+    /*Section details*/
     .section-title {
-      font-size: 2rem;
       color: #C08300;
       font-family: 'Playfair Display', serif;
       display: inline-block;
       text-transform: uppercase;
       letter-spacing: 1px;
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+
+/* Product Section */
+      .product-section {
+      padding: 4rem 2rem;
+      background-color: #0A0400;
       text-align: center;
     }
 
@@ -565,6 +567,139 @@
     .hero-text p {
       font-size: 1.2rem;
       color: #eaeaea;
+    }
+
+    /*Collection Section*/
+
+    .shop-collections {
+      padding: 4rem 2rem;
+      text-align: center;
+      color: #C08300;
+      width: 80%;
+      margin: 0 auto; /* This centers the section */
+    }
+
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .collection-card {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      height: 320px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(192, 131, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .collection-card:hover {
+      transform: scale(1.03);
+    }
+
+    .coverlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #f3e9dc;
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: 20px;
+    }
+
+    /*footer section*/
+
+    .site-footer {
+      background-color: #C4C4C4;
+      color: #0e0b09;
+      padding: 60px 20px 20px;
+      font-family: 'Georgia', serif;
+      font-style: italic;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 40px;
+    }
+
+    .footer-about {
+      flex: 1 1 300px;
+    }
+
+    .footer-about h3 {
+      font-size: 1.5rem;
+      color: #0e0b09;
+      margin-bottom: 10px;
+    }
+
+    .footer-about p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      flex: 1 1 200px;
+    }
+
+    .footer-links h4 {
+      color: #0e0b09;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: #0e0b09;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #C08300;
+    }
+
+    .footer-socials {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      color: #0e0b09;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: #C08300;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #0e0b09;
     }
 
     @media (max-width: 768px) {
@@ -870,12 +1005,81 @@
     </div>
   </section>
 
-  <!-- Reusable line -->
+<!--Collection section-->
+  <section class="shop-collections">
+    <h2 class="section-title">SHOP BY COLLECTION</h2>
+      <!-- Reusable line -->
   <div class="section-break"></div>
 
-  <section>
-    <h2 class="section-title">SHOP BY COLLECTION</h2>
+    <div class="collections-grid">
+      <div class="collection-card" style="background-image: url('heritagecoll.webp');">
+        <div class="coverlay">
+          <p>Fusion Series<br>(Heritage perfume oils)</p>
+        </div>
+      </div>
+      <div class="collection-card" style="background-image: url('artisanalcoll.webp');">
+        <div class="coverlay">
+          <p>Fusion Series<br>(Artisanal perfume oils)</p>
+        </div>
+      </div>
+      <div class="collection-card" style="background-image: url('Enthusiastcoll.webp');">
+        <div class="coverlay">
+          <p>Enthusiast Series<br>Perfume oils</p>
+        </div>
+      </div>
+      <div class="collection-card" style="background-image: url('naturee.jpg');">
+        <div class="coverlay">
+          <p>Raw Natural Collection</p>
+        </div>
+      </div>
+      <div class="collection-card" style="background-image: url('alghaliyah.webp');">
+        <div class="coverlay">
+          <p>Al Ghaliyah Extrait<br>Perfume Collection</p>
+        </div>
+      </div>
+      <div class="collection-card" style="background-image: url('insenceburn.jpeg');">
+        <div class="coverlay">
+          <p>Incense Burner Collection</p>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!--Footer section-->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>OUD COLLECTION<sup>™</sup></h3>
+        <p>OUD COLLECTION™ is where perfumery breaks from the mainstream.</p>
+        <p>We create bold, character-driven fragrances that go beyond trends — built on depth, thrill, and the raw beauty of quality materials.</p>
+        <p>Every composition is crafted to speak, not just perform — a sensory experience made to be felt, not forgotten.</p>
+      </div>
+  
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Perfumery Insights</a></li>
+          <li><a href="#">How to apply Perfume Oils</a></li>
+          <li><a href="#">Incense burning instructions</a></li>
+          <li><a href="#">Disclaimer and Safety Info</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Shipping Charges</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="footer-socials">
+      <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2025 OUD COLLECTION</p>
+    </div>
+  </footer>
 
 </body>
 </html>
