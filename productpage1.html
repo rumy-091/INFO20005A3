@@ -293,7 +293,7 @@
   display: flex;
   max-width: 1200px;
   margin: auto;
-  gap: 5px;
+  gap: 10px;
   align-items: flex-start; /* KEY: align product details to top */
   padding: 0 10px;
 }
@@ -332,6 +332,65 @@
   cursor: pointer;
 }
 
+.thumbnails-vertical img:hover {
+  border-color: #c08300;
+}
+
+/* === MAIN CAROUSEL === */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-image {
+  min-width: 100%;
+  scroll-snap-align: center;
+  border-radius: 12px;
+  display: none;
+}
+.carousel-image.active {
+  display: block;
+}
+
+/* === DOTS === */
+.carousel-dots {
+  display: none;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  background: #c08300;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+.carousel-dot.active {
+  opacity: 1;
+}
+
+/* === THUMBNAILS === */
+.thumbnails-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.thumbnails-vertical img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
 .thumbnails-vertical img:hover {
   border-color: #c08300;
 }
@@ -556,6 +615,17 @@
       color: #0e0b09;
     }
 
+    @media (min-width: 769px) {
+  .carousel,
+  .carousel-dots {
+    display: none;
+  }
+
+  #mainImage {
+    display: block;
+  }
+}
+
     @media (max-width: 768px) {
   .product-container {
     flex-direction: column;
@@ -564,7 +634,6 @@
 
   .product-images,
   .product-details {
-    flex: 0 0 100%;
     width: 100%;
   }
 
@@ -579,8 +648,36 @@
     gap: 15px;
   }
 
+  .thumbnails-vertical {
+    display: none;
+  }
+
+  .quantity-selector {
+    justify-content: center;
+  }
+
+  .carousel-image {
+    display: block;
+  }
+  .carousel-dots {
+    display: flex;
+  }
+
+  #mainImage {
+    display: none;
+  }
+
+  .carousel,
+  .carousel-dots {
+    display: flex;
+  }
+
+  .carousel {
+    overflow-x: auto;
+  }
 
 }
+
 
     </style>
 </head>
@@ -725,16 +822,65 @@
         <div class="product-container">
       
           <!-- Left: Images -->
-          <div class="product-images">
+          
             <div class="main-image-wrapper">
-              <img src="Farzanaaa.png" alt="Lilac Musk Perfume" class="main-image" />
-            </div>
-            <div class="thumbnails-vertical">
-              <img src="FarzanaiVelvet.png" alt="Thumbnail 1" />
-              <img src="FarzanaiVelvet.png" alt="Thumbnail 2" />
-              <img src="FarzanaiVelvet.png" alt="Thumbnail 3" />
-            </div>
+                <!-- Desktop: Static image swapped by thumbnails -->
+                <img src="Farzanaaa.png" alt="Main Product" class="main-image" id="mainImage" />
+              
+                <!-- Mobile: Swipeable carousel -->
+                <div class="carousel">
+                  <img src="Farzanaaa.png" alt="Product 1" class="carousel-image active" />
+                  <img src="Farzanav2.png" alt="Product 2" class="carousel-image" />
+                  <img src="productfusion.png" alt="Product 3" class="carousel-image" />
+                </div>
+                <div class="carousel-dots"></div>
+              </div>
+          
+          <div class="thumbnails-vertical">
+            <img src="Farzanaaa.png" alt="Thumbnail 1" class="thumb" />
+            <img src="Farzanav2.png" alt="Thumbnail 2" class="thumb" />
+            <img src="productfusion.png" alt="Thumbnail 3" class="thumb" />
           </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const carousel = document.querySelector('.carousel');
+            const images = document.querySelectorAll('.carousel-image');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            const mainImage = document.getElementById('mainImage');
+            const thumbnails = document.querySelectorAll('.thumbnails-vertical .thumb');
+
+            thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const newSrc = thumb.getAttribute('src');
+                mainImage.setAttribute('src', newSrc);
+            });
+            });
+
+            // === Mobile: Dots & Swipe ===
+            images.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+
+            dot.addEventListener('click', () => {
+                carousel.scrollTo({
+                left: i * carousel.offsetWidth,
+                behavior: 'smooth'
+                });
+            });
+
+            dotsContainer.appendChild(dot);
+            });
+
+            carousel.addEventListener('scroll', () => {
+            const index = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            });
+        });
+          </script>
       
           <!-- Right: Details -->
           <div class="product-details">
