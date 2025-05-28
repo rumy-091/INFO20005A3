@@ -272,6 +272,95 @@
   color: #C08300;
 }
 
+/*Cart section*/
+
+
+.cart-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: #C4C4C4;
+  margin-left: 30px;
+  font-family: lato;
+}
+
+.cart-items {
+  flex: 2;
+}
+
+#cart-products {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.product-card {
+  display: flex;
+  gap: 20px;
+  background-color: transparent;
+  border: 1px solid #C08300;
+  padding: 15px;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.product-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.price-summary {
+  flex: 1;
+  background-color: #0A0400;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #C08300;
+  margin-bottom: 40px;
+  font-family: lato;
+  color: #C4C4C4;
+  margin-right: 30px;
+}
+
+.price-summary input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.price-details p, .price-details h3 {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: #C08300;
+  color: #0A0400;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: lato;
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /*footer section*/
 
 .site-footer {
@@ -496,6 +585,65 @@
     
     <a href="index.html" class="back-link">&lt; BACK</a>
 
+    <!--Cart section-->
+
+
+    <main class="cart-container">
+        <section class="cart-items">
+          <h2>Shopping cart</h2>
+          <p id="cart-count">You have 0 item in your cart</p>
+          <div id="cart-products"></div>
+        </section>
+
+        <section class="price-summary">
+          <input type="text" placeholder="Discount or Coupon Code" />
+          <div class="price-details">
+            <p>Total Product Price <span id="total-price">$0</span></p>
+            <p>Total Discounts <span>$0</span></p>
+            <p>Shipping fee <span>$2</span></p>
+            <h3>Order Total <span id="order-total">$2</span></h3>
+          </div>
+          <button class="checkout-btn">Checkout</button>
+        </section>
+      </main>
+
+      <script>
+        const products = JSON.parse(localStorage.getItem("cart")) || [];
+
+function renderCart() {
+  const cartContainer = document.getElementById("cart-products");
+  const countDisplay = document.getElementById("cart-count");
+  const totalDisplay = document.getElementById("total-price");
+  const orderTotalDisplay = document.getElementById("order-total");
+
+  cartContainer.innerHTML = '';
+  let total = 0;
+
+  products.forEach(product => {
+    total += product.price;
+
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" />
+      <div class="product-details">
+        <h3 style="color:gold;">${product.name}</h3>
+        <p>Size: ${product.size}</p>
+        <p>Qty: 1</p>
+        <p><strong>$${product.price}</strong></p>
+      </div>
+    `;
+    cartContainer.appendChild(card);
+  });
+
+  countDisplay.textContent = `You have ${products.length} item${products.length > 1 ? 's' : ''} in your cart`;
+  totalDisplay.textContent = `$${total}`;
+  orderTotalDisplay.textContent = `$${total + 2}`; // add shipping
+}
+
+renderCart();
+
+      </script>
 
     <!--Footer section-->
   <footer class="site-footer">
