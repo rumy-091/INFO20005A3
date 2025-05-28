@@ -229,7 +229,7 @@
         font-size: 2rem;
         background: none;
         border: none;
-        color: white;
+        color: #ffffff;
         cursor: pointer;
     }
 
@@ -257,7 +257,7 @@
   display: inline-block;
   margin: 20px;
   font-size: 1rem;
-  color: #fff;
+  color: #C4C4C4;
   text-decoration: none;
   font-family: 'lato';
   background-color: transparent;
@@ -284,7 +284,7 @@
 /*Product section*/
 
 .product-section {
-  color: #f8f3e8;
+  color: #C4C4C4;
   padding: 5px 20px;
   font-family: 'Playfair Display', serif;
 }
@@ -302,7 +302,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start; /* aligns image and thumbnails to the top */
-  gap: 20px;
+  gap: 5px;
   flex: 0 0 50%;
 }
 
@@ -312,7 +312,7 @@
 }
 
 .main-image {
-  width: 100%;
+  width: 100%;          
   border-radius: 12px;
   display: block;
 }
@@ -320,7 +320,7 @@
 .thumbnails-vertical {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .thumbnails-vertical img {
@@ -402,6 +402,7 @@
   justify-content: flex-start; /* KEY: aligns content to the top */
   margin-top: 0;
   padding-top: 10px;
+  padding-left: 10px;
 }
 
 .product-details h1 {
@@ -436,7 +437,7 @@
 }
 
 .rating-number {
-  color: #ccc;
+  color: #C4C4C4;
   font-size: 1rem;
   font-family: lato;
 }
@@ -449,7 +450,7 @@
 
 .sample-text {
   font-size: 0.9rem;
-  color: #ccc;
+  color: #C4C4C4;
   margin-left: 10px;
   font-family: lato;
   font-style: italic;
@@ -527,6 +528,16 @@
 .add-to-cart:hover {
   background-color: #a46e00;
 }
+
+#addToCartBtn.added {
+    background-color: black;
+    color: #c08300;
+    border: 1px solid #c08300;
+  }
+
+  #addToCartBtn.added:hover {
+    background-color: #141000;
+  }
 
 /*footer section*/
 
@@ -834,7 +845,7 @@
                   <img src="productfusion.png" alt="Product 3" class="carousel-image" />
                 </div>
                 <div class="carousel-dots"></div>
-              </div>
+            </div>
           
           <div class="thumbnails-vertical">
             <img src="Farzanaaa.png" alt="Thumbnail 1" class="thumb" />
@@ -896,21 +907,54 @@
             <p class="price">$11.00 <span class="sample-text">Sample Product</span></p>
       
             <div class="selectors">
-              <select class="size-dropdown">
+                <select class="size-dropdown">
                 <option>0.5ML</option>
                 <option>1ML</option>
                 <option>3ML</option>
-              </select>
-      
-              <div class="quantity-selector">
+                </select>
+        
+                <div class="quantity-selector">
                 <button>–</button>
                 <span>1</span>
                 <button>+</button>
-              </div>
+                </div>
+                
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      const quantitySpan = document.querySelector(".quantity-selector span");
+                      const decrementBtn = document.querySelector(".quantity-selector button:first-child");
+                      const incrementBtn = document.querySelector(".quantity-selector button:last-child");
+                  
+                      decrementBtn.addEventListener("click", () => {
+                        let quantity = parseInt(quantitySpan.textContent);
+                        if (quantity > 1) quantitySpan.textContent = quantity - 1;
+                      });
+                  
+                      incrementBtn.addEventListener("click", () => {
+                        let quantity = parseInt(quantitySpan.textContent);
+                        quantitySpan.textContent = quantity + 1;
+                      });
+                    });
+                  </script>
+
             </div>
-            <!-- Reusable line -->
+        <!-- Reusable line -->
             <div class="section-break"></div>
-            <button class="add-to-cart">ADD TO CART</button>
+            <button id="addToCartBtn" class="add-to-cart" onclick="toggleCart()">ADD TO CART</button>
+            <script>
+                function toggleCart() {
+                  const btn = document.getElementById("addToCartBtn");
+                  if (btn.classList.contains("added")) {
+                    btn.classList.remove("added");
+                    btn.textContent = "ADD TO CART";
+                  } else {
+                    btn.classList.add("added");
+                    btn.textContent = "ADDED TO CART ✔";
+                  }
+                }
+              </script>
+            
+            
           </div>
         </div>
       </section>
