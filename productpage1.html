@@ -144,7 +144,7 @@
     }
 
     button {
-        font-family: inherit;
+        font-family: 'Playfair Display', serif;
         cursor: pointer;
     }
 
@@ -271,76 +271,97 @@
   color: #C08300;
 }
 
+/* Reusable section break */
+.section-break {
+      width: 100%;
+      margin: 1rem auto;
+      height: 2px;
+      background-color: #C08300;
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+
 /*Product section*/
 
 .product-section {
-  background-color: #0e0b09;
   color: #f8f3e8;
-  padding: 60px 20px;
-  font-family: 'Georgia', serif;
+  padding: 5px 20px;
+  font-family: 'Playfair Display', serif;
 }
 
 .product-container {
   display: flex;
-  flex-wrap: wrap;
   max-width: 1200px;
   margin: auto;
-  gap: 40px;
+  gap: 5px;
+  align-items: flex-start; /* KEY: align product details to top */
+  padding: 0 10px;
 }
 
 .product-images {
-  flex: 1 1 45%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start; /* aligns image and thumbnails to the top */
+  gap: 20px;
+  flex: 0 0 50%;
 }
 
-.product-images .main-image {
+.main-image-wrapper {
+  max-width: 450px;
+  flex-shrink: 0;
+}
+
+.main-image {
   width: 100%;
   border-radius: 12px;
+  display: block;
 }
 
-.thumbnails {
+.thumbnails-vertical {
   display: flex;
-  gap: 10px;
-  margin-top: 20px;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.thumbnails img {
-  width: 70px;
-  height: 70px;
+.thumbnails-vertical img {
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid transparent;
   cursor: pointer;
 }
 
-.thumbnails img:hover {
+.thumbnails-vertical img:hover {
   border-color: #c08300;
 }
 
 .product-details {
-  flex: 1 1 45%;
+  flex: 0 0 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* KEY: aligns content to the top */
+  margin-top: 0;
+  padding-top: 10px;
 }
 
 .product-details h1 {
   color: #c08300;
   font-size: 2rem;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .product-details h2 {
   font-size: 1.2rem;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  font-family: lato;
 }
 
 .collection-name {
   font-style: italic;
   color: #aaa;
   margin-bottom: 15px;
+  font-family: lato;
 }
 
 .rating {
@@ -358,47 +379,72 @@
 .rating-number {
   color: #ccc;
   font-size: 1rem;
+  font-family: lato;
 }
 
 .price {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 10px;
+  font-family: lato;
 }
 
 .sample-text {
   font-size: 0.9rem;
   color: #ccc;
   margin-left: 10px;
+  font-family: lato;
+  font-style: italic;
 }
 
 .selectors {
   display: flex;
   align-items: center;
   gap: 20px;
+  justify-content: space-between; /* Push elements apart */
   margin: 20px 0;
+  width: 100%; /* Make sure it spans full width */
 }
 
 .size-dropdown {
-  padding: 10px 15px;
+  appearance: none;
+  padding: 10px 40px 10px 15px; /* left padding for text, right padding for arrow */
   border-radius: 25px;
   border: 1px solid #c08300;
   background-color: transparent;
-  color: #f8f3e8;
+  color: #c08300;
   font-size: 1rem;
+  font-family: Lato, sans-serif;
+  text-align: left;
+  width: 180px;
+
+  /* Arrow on right */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23c08300" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center; /* Arrow inside the button on the right */
+  background-size: 16px;
+}
+
+/* Dropdown options styling */
+.size-dropdown option {
+  background-color: #000;
+  color: #c08300;
 }
 
 .quantity-selector {
   display: flex;
   align-items: center;
   gap: 10px;
+  color: #c08300;
   border: 1px solid #c08300;
   border-radius: 25px;
-  padding: 5px 15px;
+  padding: 10px 25px;
+  font-family: lato;
+  width: 100px;
 }
 
 .quantity-selector button {
   background: none;
-  color: #f8f3e8;
+  color: #c08300;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
@@ -406,6 +452,7 @@
 
 .add-to-cart {
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 15px 30px;
   background-color: #c08300;
   color: #0e0b09;
@@ -414,7 +461,8 @@
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: 0.3s ease;
+  font-family: lato;
 }
 
 .add-to-cart:hover {
@@ -427,7 +475,7 @@
       background-color: #C4C4C4;
       color: #0e0b09;
       padding: 60px 20px 20px;
-      font-family: 'Georgia', serif;
+      font-family: 'Playfair Display', serif;
       font-style: italic;
     }
 
@@ -507,6 +555,32 @@
       font-size: 0.9rem;
       color: #0e0b09;
     }
+
+    @media (max-width: 768px) {
+  .product-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-images,
+  .product-details {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .product-details {
+    margin-top: 20px; /* Adds space between images and details */
+    padding: 0 10px;
+  }
+
+  .selectors {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+
+}
 
     </style>
 </head>
@@ -652,8 +726,10 @@
       
           <!-- Left: Images -->
           <div class="product-images">
-            <img src="Farzanaaa.png" alt="Lilac Musk Perfume" class="main-image" />
-            <div class="thumbnails">
+            <div class="main-image-wrapper">
+              <img src="Farzanaaa.png" alt="Lilac Musk Perfume" class="main-image" />
+            </div>
+            <div class="thumbnails-vertical">
               <img src="FarzanaiVelvet.png" alt="Thumbnail 1" />
               <img src="FarzanaiVelvet.png" alt="Thumbnail 2" />
               <img src="FarzanaiVelvet.png" alt="Thumbnail 3" />
@@ -681,12 +757,13 @@
               </select>
       
               <div class="quantity-selector">
-                <button>-</button>
+                <button>–</button>
                 <span>1</span>
                 <button>+</button>
               </div>
             </div>
-      
+            <!-- Reusable line -->
+            <div class="section-break"></div>
             <button class="add-to-cart">ADD TO CART</button>
           </div>
         </div>
