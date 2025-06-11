@@ -287,6 +287,7 @@
   color: #C4C4C4;
   padding: 5px 20px;
   font-family: 'Playfair Display', serif;
+  margin-top: 25px;
 }
 
 .product-container {
@@ -539,6 +540,122 @@
     background-color: #141000;
   }
 
+  /*bottom*/
+  .bottom-section {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 60px;
+  padding: 30px;
+  justify-content: space-between; /* NEW */
+}
+
+/* LEFT COLUMN */
+.left-side {
+  display: flex;
+  flex-direction: column;
+  width: 42%;
+}
+
+/* Fragrance Notes */
+.fragrance-notes {
+  background-color: #1f1e1c;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
+}
+
+.fragrance-notes h3 {
+  font-style: italic;
+  color: #C4C4C4;
+  margin-bottom: 10px;
+}
+
+.fragrance-notes ul {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.8;
+  color: #eaeaea;
+  font-size: 0.8rem;
+}
+
+/* Recommendations */
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recommend-heading {
+  color: #C08300;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.recproduct-list {
+  display: flex;
+  gap: 20px;
+}
+
+/* Individual Recommended Product Cards */
+.recproduct-card {
+  background-color: #141010;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 200px;
+  box-shadow: 0 0 12px rgba(192, 131, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recproduct-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(192, 131, 0, 0.4);
+}
+
+.recproduct-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.recpro-info {
+  padding: 1rem;
+  text-align: left;
+  background: linear-gradient(to top, #0A0400, transparent);
+}
+
+.recpro-info h3 {
+  font-family: 'Playfair Display', serif;
+  color: #C08300;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.recpro-info p {
+  font-size: 0.95rem;
+  color: #e0e0e0;
+}
+
+/* RIGHT COLUMN */
+.right-side {
+  width: 53%;
+}
+
+.product-description {
+  height: 100%;
+}
+
+.product-description h2 {
+  color: #C08300;
+  font-family: 'Playfair Display', serif;
+}
+
+.product-description p {
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
 /*footer section*/
 
 .site-footer {
@@ -685,6 +802,28 @@
 
   .carousel {
     overflow-x: auto;
+  }
+
+  .bottom-section {
+    flex-direction: column;
+  }
+
+  .right-side {
+    width: 100%;
+    order: -1; /* Makes it appear first */
+  }
+
+  .left-side {
+    width: 100%;
+  }
+
+  .recproduct-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recproduct-card {
+    width: 90%;
   }
 
 }
@@ -961,6 +1100,63 @@
         </div>
       </section>
 
+      <section class="bottom-section">
+        <!-- LEFT SIDE -->
+        <div class="left-side">
+          <!-- Fragrance Notes -->
+          <div class="fragrance-notes">
+            <h3>Fragrance Notes:</h3>
+            <ul>
+              <li>Lilac</li>
+              <li>Florals</li>
+              <li>Musk</li>
+              <li>Powdery Notes</li>
+              <li>Honey</li>
+              <li>Yang Yang</li>
+              <li>Sandalwood</li>
+              <li>Vanilla</li>
+              <li>Black Tea</li>
+              <li>Fresh Fruity Notes</li>
+              <li>Oud</li>
+            </ul>
+          </div>
+      
+          <!-- Recommendations -->
+          <div class="recommendations">
+            <h2 class="recommend-heading">RECOMMENDED FOR YOU</h2>
+            <div class="recproduct-list">
+              <div class="recproduct-card">
+                <img src="Thebluerose.png" alt="The Blue Rose" />
+                <div class="recpro-info">
+                  <h3>The Blue Rose</h3>
+                  <p>$28 - $218</p>
+                </div>
+              </div>
+      
+              <div class="recproduct-card">
+                <img src="afghanistan.png" alt="Afghanistan" />
+                <div class="recpro-info">
+                  <h3>Afghanistan</h3>
+                  <p>$27 - $228</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- RIGHT SIDE -->
+        <div class="right-side">
+          <div class="product-description">
+            <h2>Product description</h2>
+            <p>A soft bloom of lilac and musk – elegant, feminine, and endlessly calming.</p>
+            <p>Farzana is not a loud perfume. It doesn't rush. It doesn't compete. It simply unfolds – quietly, beautifully – like a breeze through a garden in full bloom.</p>
+            <p>It opens with the romantic sweetness of honeyed lilac and soft florals, capturing the feeling of sunlight on petals and still air.</p>
+            <p>There's something instantly calming in the way it settles – smooth, powdery, full of poise. As it warms on the skin, sandalwood, musk, and a touch of vanilla create a gentle, elegant depth.</p>
+            <p>Ylang yang adds floral softness. Black tea and fruity notes drift in and out like distant memories. A trace of oud stays in the background – subtle, grounding, never overwhelming.</p>
+            <p>Farzana is timeless in its simplicity, and unforgettable in its softness. For those who love romantic scents with dignity and grace – this is one to fall into.</p>
+          </div>
+        </div>
+      </section>
 
     <!--Footer section-->
   <footer class="site-footer">
