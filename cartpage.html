@@ -175,7 +175,7 @@
         width: 30px;
         height: auto;
     }
-    
+
     .cart-count-badge {
       position: absolute;
       bottom: -5px;
@@ -324,13 +324,17 @@
     .cart-items {
       flex: 2;
       width: 50%;
+      margin-top: 20px;
     }
 
     .cart-item {
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #333;
-      padding: 10px 0;
+      justify-content: space-between;
+      border: 1px solid #c08300;
+      border-radius: 12px;
+      padding: 10px ;
+      margin-bottom: 15px;
       gap: 15px;
     }
 
@@ -341,17 +345,22 @@
 
     .cart-item-info {
       flex-grow: 1;
+      
     }
 
     .cart-item-title {
       font-weight: bold;
-      color: #f8f3e8;
+      color: #c08300;
     }
 
     .cart-item-controls {
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+
+    .cart-item-price {
+      color: white;
     }
 
     .remove-btn {
@@ -395,11 +404,64 @@
       margin-top: 8px;
     }
 
+    .qty-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 8px;
+  padding: 4px 6px;
+  background-color: transparent;
+  color: #C08300;
+  font-family: lato;
+  font-size: 14px;
+}
 
-@media (max-width: 600px) {
+.qty-number {
+  font-weight: bold;
+  width: 20px;
+  text-align: center;
+}
+
+.qty-arrows {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.qty-arrow {
+  background: none;
+  border: none;
+  color: #C08300;
+  font-size: 12px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+
+@media (max-width: 768px) {
   .product-card {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .cart-container {
+    flex-direction: column;
+    margin: 0 20px;
+  }
+
+  .cart-items,
+  .cart-summary {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .cart-summary {
+    margin-top: 20px;
+  }
+
+  .heading {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
@@ -647,22 +709,22 @@
   </div>
 </a>
 <script>
-function updateCartCounterDisplay() {
-  const cart = getCart();
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const countElem = document.getElementById("cart-count");
-  if (countElem) {
-if (totalItems > 0) {
-countElem.textContent = totalItems;
-countElem.style.display = "flex";
-} else {
-countElem.style.display = "none";
-}
-}
-}
+  function updateCartCounterDisplay() {
+    const cart = getCart();
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const countElem = document.getElementById("cart-count");
+    if (countElem) {
+  if (totalItems > 0) {
+  countElem.textContent = totalItems;
+  countElem.style.display = "flex";
+  } else {
+  countElem.style.display = "none";
+  }
+  }
+  }
 
-document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
-</script>
+  document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
+  </script>
     </header>
     <script>
         let lastScrollTop = 0;
@@ -688,8 +750,33 @@ document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
     <!--Cart section-->
 <div class="heading">
   <h2 style="font-family: lato;">Shopping Cart</h2>
-  <p style="font-family: lato;">You have <span id="cart-count">0</span> item(s) in your cart</p>
-</div>
+  <p style="font-family: Lato;">You have <span id="cart-counter">0</span> item(s) in your cart</p>
+
+  <script>
+    // Example getCart function — make sure you define this correctly elsewhere
+    function getCart() {
+      // Fallback example cart
+      return JSON.parse(localStorage.getItem("cart")) || [];
+    }
+  
+    function updateCartCounterDisplay() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      const countElem = document.getElementById("cart-counter");
+  
+      if (countElem) {
+        if (totalItems > 0) {
+          countElem.textContent = totalItems;
+          countElem.style.display = "inline";
+        } else {
+          countElem.textContent = "0";  // 
+          countElem.style.display = "inline"; 
+        }
+      }
+    }
+  
+    document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
+  </script>
   <div class="cart-container">
     
     <div class="cart-items" id="cart-items"></div>
@@ -763,10 +850,15 @@ document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
           <div class="cart-item-info">
             <div class="cart-item-title">${item.name}</div>
             <div>Size: ${item.size}</div>
-            <div>$${item.price.toFixed(2)} each</div>
+            <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
           </div>
-          <div class="cart-item-controls">
-            <input type="number" min="0" value="${item.quantity}" class="qty-input" data-index="${index}">
+          <div class="qty-wrapper" data-index="${index}">
+  <div class="qty-number">${item.quantity}</div>
+  <div class="qty-arrows">
+    <button class="qty-arrow up" data-action="increase">▲</button>
+    <button class="qty-arrow down" data-action="decrease">▼</button>
+  </div>
+</div>
             <button class="remove-btn" data-index="${index}">×</button>
           </div>
         `;
