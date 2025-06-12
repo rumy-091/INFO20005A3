@@ -382,15 +382,14 @@ input, select {
 }
 
 .payment-option {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   font-weight: bold;
   cursor: pointer;
-  padding: 0.5rem;
   border-radius: 6px;
   background-color: #2c2a28;
   transition: background-color 0.3s ease;
+  justify-content: space-between;   
+  width: 100%;
+  padding: 0.5rem 1rem;   
 }
 
 .payment-option:hover {
@@ -399,8 +398,11 @@ input, select {
 
 .payment-option input[type="radio"] {
   accent-color: #c08300;
-  transform: scale(1.1);
+  margin: 0;                         
+  transform: scale(1.1);           
 }
+
+
 
 .credit-card-fields {
   background-color: #2c2a28;
@@ -435,6 +437,7 @@ input, select {
   vertical-align: middle;
 }
 
+
 .pay-now-btn {
   margin-top: 3rem;
   margin-bottom: 10rem;
@@ -445,7 +448,7 @@ input, select {
   border-radius: 30px;
   font-weight: bold;
   cursor: pointer;
-  width: 70%;
+  width: 100%;
 }
 
 .shipping {
@@ -506,7 +509,11 @@ input, select {
   font-family: 'Lato', sans-serif;
   width: 100%;
   max-width: 360px;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start; 
 }
+
 
 .ordersumtitle {
     margin-bottom: 10px;
@@ -710,31 +717,31 @@ input, select {
                 });
             </script>
     
-    <a href="cartpage.html">
-        <div class="shopping-nav">
-            <button class="icon-button" id="openCart" style="position: relative;">
-            <img src="shopping bag.png" alt="cart" class="cart-icon"/>
-            <span id="cart-count" class="cart-count-badge">0</span>
-            </button>
-        </div>
-    </a>
-    <script>
-      function updateCartCounterDisplay() {
-        const cart = getCart();
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        const countElem = document.getElementById("cart-count");
-        if (countElem) {
-    if (totalItems > 0) {
-      countElem.textContent = totalItems;
-      countElem.style.display = "flex";
-    } else {
-      countElem.style.display = "none";
-    }
-  }
-}
+            <a href="cartpage.html">
+                <div class="shopping-nav">
+                    <button class="icon-button" id="openCart" style="position: relative;">
+                    <img src="shopping bag.png" alt="cart" class="cart-icon"/>
+                    <span id="cart-count" class="cart-count-badge">0</span>
+                    </button>
+                </div>
+            </a>
+            <script>
+            function updateCartCounterDisplay() {
+                const cart = getCart();
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                const countElem = document.getElementById("cart-count");
+                if (countElem) {
+            if (totalItems > 0) {
+            countElem.textContent = totalItems;
+            countElem.style.display = "flex";
+            } else {
+            countElem.style.display = "none";
+            }
+        }
+        }
       
-      document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
-      </script>
+        document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
+        </script>
         </header>
         <script>
             let lastScrollTop = 0;
@@ -756,11 +763,11 @@ input, select {
         </script>
         <a href="index.html" class="back-link">&lt; BACK</a>
     
-      </nav>
+    </nav>
 
     <!--checkout-->
     <main class="checkout-grid">
-        <section class="form-section">
+        <section class="form-section" >
           <div class="express-checkout">
             <button class="express-btn shop">Shop Pay</button>
             <button class="express-btn paypal">PayPal</button>
@@ -797,10 +804,10 @@ input, select {
 
   <div class="payment-box">
     <!-- Credit Card Option -->
-    <label class="payment-option">
+    <div class="payment-option">
       <input type="radio" name="payment" value="credit" checked>
       <span>Credit Card</span>
-    </label>
+    </div>
   
     <div class="credit-card-fields">
       <input type="text" placeholder="Card number">
@@ -813,7 +820,7 @@ input, select {
   
     <!-- PayPal Option -->
     <label class="payment-option">
-      <input type="radio" name="payment" value="paypal">
+      <input type="radio" name="payment" value="paypal" st>
       <span>
         PayPal
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="icon">
@@ -823,7 +830,9 @@ input, select {
     <!-- Afterpay Option -->
     <label class="payment-option">
       <input type="radio" name="payment" value="afterpay">
-      <span>Afterpay</span>
+      <span>Afterpay
+        <img src="afterpayicon.png" class="icon">
+      </span>
     </label>
   </div>
             </div>

@@ -167,11 +167,15 @@ body, html {
     
         <div class="action-buttons">
           <button class="submit" id="submitBtn">SUBMIT</button>
-          <a href="index.html">
-          <button class="back-home">BACK TO HOME</button>
-        </a>
+          <button class="back-home" onclick="goHomeAndClearCart()">BACK TO HOME</button>
         </div>
       </div>
+      <script>
+        function goHomeAndClearCart() {
+          localStorage.removeItem('cart'); // Clear the cart from localStorage
+          window.location.href = 'index.html'; // Navigate to homepage
+        }
+      </script>
 
       <script>
         const submitBtn = document.getElementById('submitBtn');
@@ -185,10 +189,11 @@ body, html {
           modalContent.innerHTML = `
             <h2>THANK YOU</h2>
             <p class="thank-you-msg">Your review has been submitted.</p>
-            <button class="back-home" onclick="window.location.href='index.html'">BACK TO HOME</button>
+            <button class="back-home" onclick="goHomeAndClearCart()">BACK TO HOME</button>
           `;
         });
       </script>
+      
       
 </body>
 </html>

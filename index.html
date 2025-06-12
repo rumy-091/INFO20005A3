@@ -141,7 +141,7 @@
         width: 30px;
         height: auto;
       }
-      
+
       .cart-count-badge {
       position: absolute;
       bottom: -5px;
@@ -960,16 +960,16 @@ document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
   });
 </script>
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" >
     <div class="hero-overlay">
       <img src="OUD-Dark-png_-_Crop_00a962cc-b4f6-4209-89c2-4fd34255355f.webp" alt="Oud Collection Logo" class="hero-logo" />
       <h1 class="headline">This is What Perfumery is Meant to Be</h1>
-      <button class="cta-btn">Explore Now!</button>
+      <button class="cta-btn" id="exploreBtn">Explore Now!</button>
     </div>
   </section>
       <!-- Product Section -->
      <!-- Recommended Products Section -->
-<section class="product-section">
+<section class="product-section" id="recommended">
   <h2 class="section-title">RECOMMENDED FOR YOU</h2>
     <!-- Reusable line -->
 <div class="section-break"></div>
@@ -999,6 +999,11 @@ document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
 </section>
   <!-- Reusable line -->
 <div class="section-break"></div>
+<script>
+  document.getElementById("exploreBtn").addEventListener("click", function () {
+    document.getElementById("recommended").scrollIntoView({ behavior: "smooth" });
+  });
+</script>
 
 <!--Customer Review Section-->
 <section class="customer-reviews">
