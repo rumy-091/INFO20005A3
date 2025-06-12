@@ -464,6 +464,46 @@ input, select {
   margin-top: 1rem;
 }
 
+@media (max-width: 768px) {
+  .main-header {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .sitename {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  .hamburger-btn {
+    top: 1rem;
+    left: 1rem;
+    position: absolute;
+  }
+
+  .search-nav {
+    top: 1rem;
+    right: 3.5rem;
+    position: absolute;
+  }
+
+  .shopping-nav {
+    top: 1rem;
+    right: 1rem;
+    position: absolute;
+  }
+
+  /* Prevent icon overlap by reducing icon size */
+  .hamburger-icon,
+  .search-icon,
+  .cart-icon {
+    width: 24px;
+  }
+}
+
     </style>
 </head>
 <body>
