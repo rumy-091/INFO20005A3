@@ -175,6 +175,23 @@
         width: 30px;
         height: auto;
     }
+    
+    .cart-count-badge {
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      background-color: #c08300;
+      color: #0A0400;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      min-height: 20px;
+    }
 
     .search-nav {
         position: absolute; 
@@ -621,13 +638,31 @@
             });
         </script>
 
-    <a href="cartpage.html">
-        <div class="shopping-nav">
-            <button class="icon-button" id="openCart">
-            <img src="shopping bag.png" alt="cart" class="cart-icon"/>
-            </button>
-        </div>
-    </a>
+<a href="cartpage.html">
+  <div class="shopping-nav">
+      <button class="icon-button" id="openCart" style="position: relative;">
+      <img src="shopping bag.png" alt="cart" class="cart-icon"/>
+      <span id="cart-count" class="cart-count-badge">0</span>
+      </button>
+  </div>
+</a>
+<script>
+function updateCartCounterDisplay() {
+  const cart = getCart();
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const countElem = document.getElementById("cart-count");
+  if (countElem) {
+if (totalItems > 0) {
+countElem.textContent = totalItems;
+countElem.style.display = "flex";
+} else {
+countElem.style.display = "none";
+}
+}
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCounterDisplay);
+</script>
     </header>
     <script>
         let lastScrollTop = 0;
