@@ -1087,9 +1087,45 @@
             <div class="selectors">
                 <select class="size-dropdown">
                 <option>0.5ML</option>
-                <option>1ML</option>
                 <option>3ML</option>
                 </select>
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    const sizeDropdown = document.querySelector(".size-dropdown");
+                    const priceElement = document.querySelector(".price");
+                   
+                    sizeDropdown.addEventListener("change", () => {
+                      updatePrice();
+                      resetAddToCartButton();
+                    });
+
+                    // Define price map
+                    const priceMap = {
+                      "0.5ML": 22,
+                      "3ML": 103
+                    };
+                
+                    function updatePrice() {
+                    const selectedSize = sizeDropdown.value;
+                    const newPrice = priceMap[selectedSize];
+                    let label = "";
+    
+                    if (selectedSize === "0.5ML") {
+                      label = '<span class="sample-text">Sample Product</span>';
+                    } else if (selectedSize === "3ML") {
+                      label = '<span class="sample-text">Full Bottle</span>';
+                    }
+    
+                    priceElement.innerHTML = `$${newPrice.toFixed(2)} ${label}`;
+                  }
+                
+                    // Initial load
+                    updatePrice();
+                
+                    // When size changes
+                    sizeDropdown.addEventListener("change", updatePrice);
+                  });
+                </script>
         
                 <div class="quantity-selector">
                 <button>–</button>
@@ -1105,12 +1141,16 @@
                   
                       decrementBtn.addEventListener("click", () => {
                         let quantity = parseInt(quantitySpan.textContent);
-                        if (quantity > 1) quantitySpan.textContent = quantity - 1;
+                        if (quantity > 1) {
+                          quantitySpan.textContent = quantity - 1;
+                          resetAddToCartButton();
+                        }
                       });
-                  
+
                       incrementBtn.addEventListener("click", () => {
                         let quantity = parseInt(quantitySpan.textContent);
                         quantitySpan.textContent = quantity + 1;
+                        resetAddToCartButton();
                       });
                     });
                   </script>
@@ -1151,18 +1191,28 @@
           function saveCart(cart) {
             localStorage.setItem(CART_KEY, JSON.stringify(cart));
           }
-          
+
+          function resetAddToCartButton() {
+            const btn = document.getElementById("addToCartBtn");
+            btn.classList.remove("added");
+            btn.textContent = "ADD TO CART";
+          }
+                    
           // Add to cart logic
           function toggleCart() {
             const btn = document.getElementById("addToCartBtn");
             const size = document.querySelector(".size-dropdown").value;
             const quantity = parseInt(document.querySelector(".quantity-selector span").textContent);
-          
+            const priceMap = {
+              "0.5ML": 22,
+              "3ML": 103
+            };
+
             // Product Info — customize as needed
             const product = {
               id: "farzana-lilac", // Unique ID
               name: "FARZANA",
-              price: 11,
+              price: priceMap[size],
               size: size,
               quantity: quantity,
               image: "Farzanaaa.png" // Adjust based on your image structure
